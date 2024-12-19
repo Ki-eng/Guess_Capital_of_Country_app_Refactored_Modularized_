@@ -9,14 +9,12 @@ class Scorecard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeData theme = Theme.of(context);
     return Customcard(
       elevation: 10,
       shadowColor: Colors.grey,
-      headingWidget: Text(
-        'SCORE  ${score}/${totalAttempted}',
-        style: TextStyle(
-            fontSize: 24, color: Colors.indigo, fontWeight: FontWeight.bold),
-      ),
+      headingWidget: Text('SCORE  ${score}/${totalAttempted}',
+          style: theme.textTheme.headlineMedium),
     );
   }
 }
