@@ -61,6 +61,7 @@ class _GuessCountryState extends State<GuessCountry> {
               totalAttempted: quizScoreCard.totalAttempted,
             ),
             Customcard(
+                onPress: handleShowAnswer,
                 elevation: 10,
                 height: 200,
                 shadowColor: Colors.grey,

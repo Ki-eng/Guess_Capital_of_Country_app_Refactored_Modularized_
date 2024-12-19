@@ -7,7 +7,8 @@ class Customcard extends StatelessWidget {
       this.bodyWidget,
       this.elevation,
       this.backgroundColor,
-      this.shadowColor});
+      this.shadowColor,
+      this.onPress});
 
   final double? height;
   final Widget? headingWidget;
@@ -15,6 +16,7 @@ class Customcard extends StatelessWidget {
   final double? elevation;
   final Color? backgroundColor;
   final Color? shadowColor;
+  final VoidCallback? onPress;
 
   @override
   Widget build(BuildContext context) {
@@ -22,22 +24,26 @@ class Customcard extends StatelessWidget {
       padding: EdgeInsets.all(10),
       child: SizedBox(
         height: height,
-        child: Card(
-          elevation: elevation,
-          shadowColor: shadowColor,
-          color: backgroundColor,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              //As we have created heading and body widget optional,
-              //means they can be null but in column we can not pass any nullable widget so here ww wraped heading widget in container widget.
-              Container(
-                child: headingWidget,
-              ),
-              Container(
-                child: bodyWidget,
-              )
-            ],
+        child: GestureDetector(
+          onTap: onPress,
+          child: Card(
+            elevation: elevation,
+            shadowColor: shadowColor,
+            color: backgroundColor,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                //As we have made the heading and body widgets optional, meaning they can be null,
+                //we cannot pass a nullable widget directly into a column. Therefore, we have wrapped the heading widget in a container.
+
+                Container(
+                  child: headingWidget,
+                ),
+                Container(
+                  child: bodyWidget,
+                )
+              ],
+            ),
           ),
         ),
       ),
